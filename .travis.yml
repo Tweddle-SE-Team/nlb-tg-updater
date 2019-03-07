@@ -7,13 +7,13 @@ script:
   - pip install -r requirements.txt -t build/
   - cp index.py logging.ini -t build/
   - cd build && zip -r ../build-${TRAVIS_TAG}.zip * && cd ..
-  - ls
 
 deploy:
   provider: releases
+  file: build-${TRAVIS_TAG}.zip
+  skip-cleanup: true
   api_key:
     secure: bgWBbRFhdrKILZiB5QbCMOYIOdpPJqVi6uAlZDYDBT88JK0YdvYI0iHgt/REaXizwu+Fwwc/GICek8cM5ILgp6jsg78KccQs8GIImNMECXYoCVWbRxIQVT6nLtCY3+AwVpHulAE8v4tpvxUJMs/3A2iIJmkXjyPcPgqxpZmQJgAV86JIlKBnROmuzNUS9r7HxcwQC2f7JNOrRNp0aILdGrtWYnSXAeQ8EkQqvBB8AMB04A181eMwJcE0VUeGj1S21I/E9fR0jRLm9IFiPm0BFrx7NdX70fbaW1mU4rBVebcExAWbyXWp51yU22bbd3Zc4+i5QqDqnBcob28NNfKvAduDQ+7R7OOQHrcosTCfcw8liZmKzNKjouTyLfCAF2bbnsyqs46e57n/09z8PXSmYrMkhB51o+5xu9bhQJ15yGkmf5ewxhladDOA6Iofvqvg76nLBE3otQ5Cdj5Gt/B6iYMWhEzk3vOglANul250sz4F/1e9dYuDl/LMVq5ccYNtVlPIiliej8lJcMqswJKBmxI6Ro76ISBl7/WvmKsw0CnMcN3wijmpMJblmInd3iwRrIUIxSvAkuycebmhnkn9OVGuEz3xTzzk78dVdjes22PXlUVs2ocO017i9BB05nJzaZDmcU/jmP59o72zs9uAQQZIqaoPLxQgj/nWL846Dsc=
-  file: build-${TRAVIS_TAG}.zip
   on:
     repo: Tweddle-SE-Team/nlb-tg-updater
     tags: true
